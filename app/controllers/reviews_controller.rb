@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  before_fileter :restrict_access
+  before_filter :restrict_access
   before_filter :load_movie 
 
   def new

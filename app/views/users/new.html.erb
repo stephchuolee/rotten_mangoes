@@ -1,6 +1,6 @@
 <h1>Sign Up</h1>
 <%= form_for @user do |f| %>
-  <%= if @user.errors.any? %> 
+  <% if @user.errors.any? %>
     <div> 
       <%= pluralize(@user.errors.count, "error") %> prevented this account from being created:
       <ul> 

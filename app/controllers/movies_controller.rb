@@ -35,17 +35,17 @@ class MoviesController < ApplicationController
     end 
   end 
 
-  def delete
+  def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to movies_path
+    redirect_to movies_path # this doesn't work 
   end 
 
   protected 
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
+      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description, :image
     )
   end  
 

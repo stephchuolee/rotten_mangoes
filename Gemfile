@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pry'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -30,7 +32,10 @@ gem 'jbuilder', '~> 1.2'
 # Image uploader
 gem 'carrierwave'
 
+# For thumbnails 
 gem "mini_magick"
+
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

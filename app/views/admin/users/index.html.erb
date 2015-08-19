@@ -1,0 +1,7 @@
+<h2> Admin Page </h2>
+
+<% @users.each do |user| %>
+  <ul> 
+    <li> <strong>Name: <%= user.firstname %> <%= user.lastname %></strong></li>
+  </ul>
+<% end %> 

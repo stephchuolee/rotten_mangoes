@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to movies_path # this doesn't work 
+    redirect_to movies_path
   end 
 
   def search
@@ -58,8 +58,25 @@ class MoviesController < ApplicationController
       max_duration = '99999'
     end
 
-     @movies = Movie.find(:all, :conditions => ['title LIKE ? OR director LIKE ? OR runtime_in_minutes > ? AND runtime_in_minutes < ?', "%#{params[:title]}%", "%#{params[:director]}%", min_duration, max_duration])
+    #  @movies = Movie.find(:all, :conditions => ['title LIKE ? OR director LIKE ? OR runtime_in_minutes > ? AND runtime_in_minutes < ?', "%#{params[:title]}%", "%#{params[:director]}%", min_duration, max_duration])
+    # render :index
+
+    @movies = Movie.all 
+
+    if !params[:title].empty? 
+      @movies = @movies.where('title LIKE ?', "%#{params[:title]}%")
+    end 
+
+    if !params[:director].empty?
+      @movies = @movies.where('director LIKE ?', "%#{params[:director]}%")
+    end 
+
+    if !params[:runtime_in_minutes].empty?
+      @movies = @movies.where('runtime_in_minutes > ? AND runtime_in_minutes <= ?', min_duration, max_duration)
+    end 
+
     render :index
+
   end 
 
   protected 

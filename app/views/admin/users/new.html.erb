@@ -1,0 +1,6 @@
+<%= link_to "Back to all users", users_path %>
+
+<h2>Create a new user</h2>
+<%= form_for [:admin, @user] do |form| %>
+  <%= render partial: '/users/form', locals: {f: form} %>
+<% end %> 

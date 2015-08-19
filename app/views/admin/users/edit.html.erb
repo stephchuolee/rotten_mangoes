@@ -1,0 +1,6 @@
+<%= link_to "Back to this user", user_path(@user) %>
+
+<h2>Edit this user</h2>
+<%= form_for [:admin, @user] do |form| %>
+  <%= render partial: '/users/form', locals: {f: form} %>
+<% end %> 

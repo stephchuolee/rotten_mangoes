@@ -27,6 +27,7 @@ class Movie < ActiveRecord::Base
     end 
   end 
 
+
   protected 
 
   def release_date_is_in_the_future

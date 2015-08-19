@@ -41,6 +41,27 @@ class MoviesController < ApplicationController
     redirect_to movies_path # this doesn't work 
   end 
 
+  def search
+
+    runtime_in_minutes = params[:runtime_in_minutes]
+    case runtime_in_minutes
+    when 'Under 90 minutes'  
+      min_duration = '0'
+      max_duration = '90'
+
+    when '90-120 minutes'  
+      min_duration = '90'
+      max_duration = '120'
+
+    when 'Over 120 minutes'  
+      min_duration = '120'
+      max_duration = '99999'
+    end
+
+     @movies = Movie.find(:all, :conditions => ['title LIKE ? OR director LIKE ? OR runtime_in_minutes > ? AND runtime_in_minutes < ?', "%#{params[:title]}%", "%#{params[:director]}%", min_duration, max_duration])
+    render :index
+  end 
+
   protected 
 
   def movie_params

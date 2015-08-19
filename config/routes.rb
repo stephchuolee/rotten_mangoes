@@ -1,7 +1,7 @@
 RottenMangoes::Application.routes.draw do
-  get "reviews/new"
-  get "reviews/create"
 
+  get 'movies/search'
+  
   resources :movies do 
     resources :reviews, only: [:new, :create]
   end 

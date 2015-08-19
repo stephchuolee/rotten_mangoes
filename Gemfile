@@ -35,6 +35,8 @@ gem 'carrierwave'
 # For thumbnails 
 gem "mini_magick"
 
+# For pagination
+gem 'kaminari'
 
 
 group :doc do

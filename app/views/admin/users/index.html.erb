@@ -1,7 +1,24 @@
-<h2> Admin Page </h2>
+<h2> List of All Users </h2>
 
-<% @users.each do |user| %>
-  <ul> 
-    <li> <strong>Name: <%= user.firstname %> <%= user.lastname %></strong></li>
-  </ul>
-<% end %> 
+<%= paginate @users %>
+
+<table>
+    <tr>
+      <thead>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Admin?</td>
+      </thead>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr> 
+        <td><%= link_to(user.firstname, admin_user_path(user.id)) %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+      </tr>
+    <% end %>
+</table>
+

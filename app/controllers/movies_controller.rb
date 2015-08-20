@@ -58,23 +58,34 @@ class MoviesController < ApplicationController
       max_duration = '99999'
     end
 
+    # old version of search without active record scopes: 
+
     #  @movies = Movie.find(:all, :conditions => ['title LIKE ? OR director LIKE ? OR runtime_in_minutes > ? AND runtime_in_minutes < ?', "%#{params[:title]}%", "%#{params[:director]}%", min_duration, max_duration])
     # render :index
 
     @movies = Movie.all 
 
-    if !params[:title].empty? 
-      @movies = @movies.where('title LIKE ?', "%#{params[:title]}%")
-    end 
+    # if !params[:title].empty? 
+    #   @movies = @movies.where('title LIKE ?', "%#{params[:title]}%")
+    # end 
 
+    # if !params[:director].empty?
+    #   @movies = @movies.where('director LIKE ?', "%#{params[:director]}%")
+    # end 
+
+    # if !params[:runtime_in_minutes].empty?
+    #   @movies = @movies.where('runtime_in_minutes > ? AND runtime_in_minutes <= ?', min_duration, max_duration)
+    # end 
+
+    if !params[:title].empty?
+      @movies = @movies.title(params[:title])
+    end 
     if !params[:director].empty?
-      @movies = @movies.where('director LIKE ?', "%#{params[:director]}%")
+      @movies = @movies.director(params[:director])
     end 
-
     if !params[:runtime_in_minutes].empty?
-      @movies = @movies.where('runtime_in_minutes > ? AND runtime_in_minutes <= ?', min_duration, max_duration)
+      @movies = @movies.runtime_in_minutes(min_duration, max_duration)
     end 
-
     render :index
 
   end 

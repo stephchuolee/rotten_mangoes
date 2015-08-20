@@ -20,6 +20,9 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_future
 
+  scope :title,              -> (title) { where('title LIKE ?', "%#{title}%") }
+  scope :director,           -> (director) { where('director LIKE ?', "%#{director}%") }
+  scope :runtime_in_minutes, -> (min_duration, max_duration) { where ("runtime_in_minutes > #{min_duration} AND runtime_in_minutes <= #{max_duration}") }
 
   def review_average
     if reviews.size > 0 

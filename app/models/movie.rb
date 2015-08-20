@@ -23,7 +23,12 @@ class Movie < ActiveRecord::Base
   scope :query,   -> (query) { where('title LIKE ? OR director LIKE ?', "%#{query}%", "%#{query}%") }
   scope :title,              -> (title) { where('title LIKE ?', "%#{title}%") }
   scope :director,           -> (director) { where('director LIKE ?', "%#{director}%") }
-  scope :runtime_in_minutes, -> (min_duration, max_duration) { where ("runtime_in_minutes > #{min_duration} AND runtime_in_minutes <= #{max_duration}") }
+
+  # scope :runtime_in_minutes, -> (min_duration, max_duration) { where ("runtime_in_minutes => #{min_duration} AND runtime_in_minutes <= #{max_duration}") }
+
+  scope :runtime_in_minutes, -> (min_duration, max_duration) {
+    where('runtime_in_minutes >= ? AND runtime_in_minutes <= ?', min_duration, max_duration)
+  }
 
   def review_average
     if reviews.size > 0 

@@ -77,11 +77,17 @@ class MoviesController < ApplicationController
     #   @movies = @movies.where('runtime_in_minutes > ? AND runtime_in_minutes <= ?', min_duration, max_duration)
     # end 
 
-    if !params[:title].empty?
-      @movies = @movies.title(params[:title])
-    end 
-    if !params[:director].empty?
-      @movies = @movies.director(params[:director])
+
+    # code for second search feature (AR scopes):
+
+    # if !params[:title].empty?
+    #   @movies = @movies.title(params[:title])
+    # end 
+    # if !params[:director].empty?
+    #   @movies = @movies.director(params[:director])
+    # end 
+    if !params[:query].empty? 
+      @movies = @movies.query(params[:query])
     end 
     if !params[:runtime_in_minutes].empty?
       @movies = @movies.runtime_in_minutes(min_duration, max_duration)

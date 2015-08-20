@@ -2,10 +2,15 @@
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
 <%= form_tag "/movies/search", method: "get" do %>
-  <%= label_tag(:title, "Search for movie title:") %>
+  <!-- code for previous search feature: -->
+ <!--  <%= label_tag(:title, "Search for movie title:") %>
   <%= text_field_tag(:title) %>
   <%= label_tag(:director, "Search for movie director:") %>
-  <%= text_field_tag(:director) %>
+  <%= text_field_tag(:director) %> -->
+  
+  <%= label_tag(:query, "Search for keyword:") %> 
+  <%= text_field_tag(:query) %> 
+
   <%= label_tag(:runtime_in_minutes, "Select duration:") %>
   <%
     options = ['Under 90 minutes', '90-120 minutes', 'Over 120 minutes']

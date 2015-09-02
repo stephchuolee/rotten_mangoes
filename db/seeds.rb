@@ -7,11 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = [
-  'Steff',
-  'Lee',
+  'Steph',
+  'Chuo-Lee',
   'email@email.com',
   'blah1234'
 ]
 
 
 User.create(firstname: user[0], lastname: user[1], email: user[2], password: user[3], password_confirmation: user[3])
+
+

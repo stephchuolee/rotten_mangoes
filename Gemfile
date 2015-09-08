@@ -40,6 +40,7 @@ gem 'kaminari'
 
 # Styling 
 gem 'susy'
+gem 'breakpoint'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

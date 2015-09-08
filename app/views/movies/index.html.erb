@@ -1,9 +1,9 @@
 <h1>Rotten Mangoes</h1>
 
-<%= link_to "Submit a movie!", new_movie_path %>
+<nav> 
+  <span><%= link_to "Submit a movie!", new_movie_path %></span>
 
-<div id="search"
-  <%= form_tag "/movies/search", method: "get" do %>
+  <span><%= form_tag "/movies/search", method: "get" do %>
     <!-- code for previous search feature: -->
    <!--  <%= label_tag(:title, "Search for movie title:") %>
     <%= text_field_tag(:title) %>
@@ -19,12 +19,11 @@
     %>
     <%= select_tag(:runtime_in_minutes, options_for_select(options)) %> 
     <%= submit_tag("Search") %>
-  <% end %>
-</div>
+  <% end %></span>
+</nav>
 
 <div id="movies">
   <% @movies.each do |movie| %> 
     <%= render partial: 'movie', locals: {movie: movie} %>
   <% end %>
 </div>
-
